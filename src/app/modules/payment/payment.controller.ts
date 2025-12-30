@@ -11,7 +11,8 @@ const handleStripeWebhookEvent = catchAsync(async (req: Request, res: Response) 
 
     if (!webhookSecret) {
         console.error("⚠️ Stripe webhook secret not configured");
-        return res.status(500).send("Webhook secret not configured");
+        res.status(500).send("Webhook secret not configured");
+        return;
     }
 
     let event;
