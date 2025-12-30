@@ -1,22 +1,22 @@
 #!/bin/bash
 set -o errexit
 
-echo "🚀 Starting build process..."
+echo "🚀 Starting Render deployment build..."
 
-# Install all dependencies (including dev dependencies for build)
+# Install all dependencies
 echo "📦 Installing dependencies..."
 npm ci
 
-# Generate Prisma client first
+# Generate Prisma client (must be done before TypeScript build)
 echo "🔧 Generating Prisma client..."
-npx prisma generate --schema=./prisma/schema/schema.prisma
+npx prisma generate
 
-# Build TypeScript
+# Build TypeScript application
 echo "🏗️ Building TypeScript..."
 npm run build
 
-# Run database migrations
-echo "🗄️ Running database migrations..."
-npx prisma migrate deploy --schema=./prisma/schema/schema.prisma
+# Deploy database migrations
+echo "🗄️ Deploying database migrations..."
+npx prisma migrate deploy
 
 echo "✅ Build completed successfully!"
