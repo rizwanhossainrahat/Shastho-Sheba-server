@@ -18,9 +18,9 @@ export type IDoctorUpdate = {
     qualification?: string;
     currentWorkingPlace?: string;
     designation?: string;
-    // NEW: Simplified specialty management
-    specialties?: string[]; // Array of specialty IDs to add
-    removeSpecialties?: string[]; // Array of specialty IDs to remove
+    
+    specialties?: string[]; 
+    removeSpecialties?: string[]; 
 };
 
 export type ISpecialties = {
